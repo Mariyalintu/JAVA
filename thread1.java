@@ -1,50 +1,62 @@
 import java.util.Scanner;
-class Tables extends Thread
+class Multi extends Thread
 {
-public void run(){
-int num;
-System.out.println("Enter any Number for tables:");
-Scanner in=new Scanner(System.in);
-num=in.nextInt();
-for(int i=1; i<=10; i++){
-int n=num*i;
-
-System.out.println(num+"*"+i+"="+n);
-
-}
-}
+  int a=5,m;
+	public void run()
+	{
+	System.out.println("MULTIPLICATION TABLE");
+	for(int i=1;i<=10;i++)	
+	{
+	m=a*i;
+	System.out.println(a+ "*" +i+ "=" +m);  
+	}  
+	}
 }
 class Prime extends Thread
+{ 
+	public void run()
+	{  
+	int i, j,k;
+	 Scanner sc= new Scanner(System.in);
+	 System.out.println("\n First N prime numbers");
+	 System.out.println("Enter the limit:");
+	 int n = sc.nextInt();
+	 
+	    
+	 System.out.println("Prime numbers between 1 and " + n + " are:");
+	
+	    for (i = 1; i <= n; i++)
+	    {
+	 
+	        if (i == 1 || i == 0)
+	            continue;
+	 
+	        k= 1;
+	      for (j = 2; j <= i / 2; j++)
+	        {
+	            if (i % j == 0)
+	            {
+	                k = 0;
+	                break;
+	            }
+	        }
+	 
+	        if (k == 1)
+	            System.out.print(i + " ");
+	    }
+	}
+  }	
+
+class Main
 {
-public void run(){
-int n, i, count, j;
-    Scanner scan = new Scanner(System.in);
+	public static void main(String args[])
+	{  
 
-    System.out.println("Enter the value of n to find prime number:");
-    n = scan.nextInt();
-
-    System.out.println("The first " + n + " prime numbers are:");
-
-    for (i = 2; i <= n; i++) {
-      count = 0;
-      for (j = 2; j <= i / 2; j++) {
-        if (i % j == 0) {
-          count++;
-          break;
-        }
-      }
-      if (count == 0 && i != 1) {
-        System.out.print(i + " ");
-      }
-    }
-  }
-}
-class main
-{
-public static void main(String args[]) {
-Tables t1=new Tables();
-t1.start();
-Prime p1=new Prime();
-p1.start();
-}
+		Multi m=new Multi();
+		Prime p=new Prime(); 
+		
+		m.start();
+    	p.start();
+		
+ 	}  
 }
